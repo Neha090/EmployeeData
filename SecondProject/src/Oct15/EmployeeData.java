@@ -13,7 +13,7 @@ public class EmployeeData {
 	
 	public static void main(String[] args)throws IOException
 	{
-		Map<Integer,Emp> employeesList=new HashMap<>();
+		Map<Integer,Emp> employeesList=new TreeMap<>();
 		List<Employee> duplicateRecords =new ArrayList();
 		
 		String readLine="";
@@ -45,13 +45,7 @@ public class EmployeeData {
 			{
 				System.out.println(emp.id+","+emp.firstName+","+emp.lastName+","+emp.age+","+emp.emailId);
 			}
-			
-			Map<Integer, Emp> result = employeesList.entrySet().stream()
-	                .sorted(Map.Entry.comparingByKey())
-	                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-	                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
 
-			
 			FileWriter fWriter=new FileWriter("C:\\Users\\nsaini\\eclipse-workspace\\SecondProject\\NewRecord.csv");
 			BufferedWriter writer = new BufferedWriter(fWriter);
 			
